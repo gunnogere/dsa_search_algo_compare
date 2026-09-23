@@ -1,4 +1,4 @@
-# Search Algorithm Comparison
+# Search Algorithm Comparison.
 
 This exercise compares three ways to find a driver by ID:
 
@@ -6,7 +6,7 @@ This exercise compares three ways to find a driver by ID:
 - **Binary search** repeatedly halves the sorted list: `O(log n)` time and `O(1)` extra space.
 - **Hash map search** looks up the ID in a dictionary: `O(1)` average time and `O(n)` extra space.
 
-## Files
+## Files.
 
 - `algo.py` loads the data and measures the three search methods.
 - `drivers.json` contains the driver records used by the comparison.
