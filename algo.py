@@ -53,4 +53,25 @@ for name, search in searches:
     start = time.perf_counter()
     result = search(target)
     elapsed = (time.perf_counter() - start) * 1000
-    print(f"{name}: {result['name']} | Zone: {result['zone']} | Status: {result['status']} | Found in {elapsed:.6f} ms")
+    print(f"{name}:")
+    print(f"  Driver : {result['name']}")
+    print(f"  Zone   : {result['zone']}")
+    print(f"  Status : {result['status']}")
+    print(f"  Found  : {elapsed:.6f} ms")
+    print()
+
+# Speedup comparison summary
+print("SUMMARY")
+print("-" * 20)
+
+timings = []
+for name, search in searches:
+    start = time.perf_counter()
+    result = search(target)
+    elapsed = (time.perf_counter() - start) * 1000
+    timings.append((name, elapsed))
+
+baseline = timings[0][1]  # Linear search time as the baseline
+for name, elapsed in timings:
+    speedup = baseline / elapsed if elapsed > 0 else float('inf')
+    print(f"{name:<20} {elapsed:>10.6f} ms   ({speedup:>6.1f}x faster than Linear)")
