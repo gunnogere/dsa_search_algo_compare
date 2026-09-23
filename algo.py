@@ -53,4 +53,4 @@ for name, search in searches:
     start = time.perf_counter()
     result = search(target)
     elapsed = (time.perf_counter() - start) * 1000
-    print(f"{name}: {result['name']} found in {elapsed:.6f} ms")
+    print(f"{name}: {result['name']} | Zone: {result['zone']} | Status: {result['status']} | Found in {elapsed:.6f} ms")
