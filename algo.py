@@ -78,5 +78,8 @@ for name, search in searches:
 
 baseline = timings[0][1]  # Linear search time as the baseline
 for name, elapsed in timings:
-    speedup = baseline / elapsed if elapsed > 0 else float('inf')
-    print(f"{name:<20} {elapsed:>10.6f} ms avg   ({speedup:>6.1f}x faster than Linear)")
+    if name == "Linear search":
+        print(f"{name:<20} {elapsed:>10.6f} ms avg   (baseline)")
+    else:
+        speedup = baseline / elapsed if elapsed > 0 else float('inf')
+        print(f"{name:<20} {elapsed:>10.6f} ms avg   ({speedup:>6.1f}x faster than Linear)")
