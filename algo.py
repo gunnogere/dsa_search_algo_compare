@@ -61,17 +61,22 @@ for name, search in searches:
     print()
 
 # Speedup comparison summary
-print("SUMMARY")
+print("SUMMARY (averaged over 100 runs)")
 print("-" * 20)
+
+RUNS = 100  # average over multiple runs for more stable, reliable timing
 
 timings = []
 for name, search in searches:
-    start = time.perf_counter()
-    result = search(target)
-    elapsed = (time.perf_counter() - start) * 1000
-    timings.append((name, elapsed))
+    total_time = 0
+    for _ in range(RUNS):
+        start = time.perf_counter()
+        search(target)
+        total_time += (time.perf_counter() - start) * 1000
+    avg_time = total_time / RUNS
+    timings.append((name, avg_time))
 
 baseline = timings[0][1]  # Linear search time as the baseline
 for name, elapsed in timings:
     speedup = baseline / elapsed if elapsed > 0 else float('inf')
-    print(f"{name:<20} {elapsed:>10.6f} ms   ({speedup:>6.1f}x faster than Linear)")
+    print(f"{name:<20} {elapsed:>10.6f} ms avg   ({speedup:>6.1f}x faster than Linear)")
