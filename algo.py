@@ -1,7 +1,6 @@
 import json
 import time
 
-
 # The seed file is already sorted by driver ID.
 with open("drivers.json", "r") as file:
     drivers = json.load(file)
@@ -15,7 +14,6 @@ def linear_search(search_item):
         if driver["id"] == search_item:
             return driver
     return None
-
 
 def binary_search(search_item):
     """Repeatedly halve the sorted list: O(log n) time, O(1) space."""
