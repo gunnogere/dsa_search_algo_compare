@@ -32,7 +32,25 @@ From this directory, run:
 python3 algo.py
 ```
 
-The script searches for the last driver in the dataset and prints the matching driver and elapsed time for each algorithm.
+The script searches for the last driver in the dataset and prints the full matching driver record (name, zone, status) and elapsed time for each algorithm.
+
+Each search is also run 100 times and averaged for more stable timing results, shown in a SUMMARY table at the end, including a speedup comparison against Linear Search as the baseline.
+
+### Example output
+
+```
+Linear search:
+  Driver : Claude Uwase
+  Zone   : Gasabo
+  Status : available
+  Found  : 0.036818 ms
+
+SUMMARY (averaged over 100 runs)
+--------------------
+Linear search          0.036818 ms avg   (baseline)
+Binary search           0.001396 ms avg   (  26.4x faster than Linear)
+Hash map search          0.000150 ms avg   ( 245.3x faster than Linear)
+```
 
 ## Requirements
 
